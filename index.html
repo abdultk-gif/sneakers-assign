@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sneakers</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to CSS file -->
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">sneakers</div>
+            <div class="menu-button" onclick="toggleMenu()">☰</div> <!-- Menu button -->
+            <nav class="nav-links">
+                <a href="#">Collections</a>
+                <a href="#">Men</a>
+                <a href="#">Women</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </nav>
+            <div class="icons">
+                <img src="images/icon-cart.svg" alt="Cart" class="cart-icon">
+                <img src="images/image-avatar.png" alt="User Avatar" class="avatar-icon">
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Left Column: Product Images -->
+            <div class="left-column">
+                <img src="images/image-product-1.jpg" alt="Main Product Image" class="main-image" id="mainImage">
+                <div class="thumbnails">
+                    <img src="images/image-product-1-thumbnail.jpg" alt="Thumbnail 1" onclick="changeImage(this)">
+                    <img src="images/image-product-2-thumbnail.jpg" alt="Thumbnail 2" onclick="changeImage(this)">
+                    <img src="images/image-product-3-thumbnail.jpg" alt="Thumbnail 3" onclick="changeImage(this)">
+                    <img src="images/image-product-4-thumbnail.jpg" alt="Thumbnail 4" onclick="changeImage(this)">
+                </div>
+            </div>
+
+            <!-- Right Column: Product Info -->
+            <div class="right-column">
+                <h1 class="product-title">SNEAKER COMPANY</h1>
+                <h2 class="limited-edition">Fall Limited Edition Sneakers</h2>
+                <p class="product-description">
+                    These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they'll withstand everything the weather can offer.
+                </p>
+                <div class="price">
+                    $125.00 <del>$250.00</del> <span class="discount">50% OFF</span>
+                </div>
+                <div class="cart-actions">
+                    <div class="quantity-container">
+                        <button class="quantity-button" onclick="decreaseQuantity()">-</button>
+                        <input type="number" class="quantity-input" id="quantity" value="1" min="1">
+                        <button class="quantity-button" onclick="increaseQuantity()">+</button>
+                    </div>
+                    <button class="add-to-cart">Add to cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function increaseQuantity() {
+            const quantityInput = document.getElementById('quantity');
+            quantityInput.value = parseInt(quantityInput.value) + 1;
+        }
+
+        function decreaseQuantity() {
+            const quantityInput = document.getElementById('quantity');
+            if (quantityInput.value > 1) {
+                quantityInput.value = parseInt(quantityInput.value) - 1;
+            }
+        }
+
+        function changeImage(thumbnail) {
+            const mainImage = document.getElementById('mainImage');
+            mainImage.src = thumbnail.src.replace('-thumbnail', '');
+        }
+
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
